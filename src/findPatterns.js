@@ -26,7 +26,8 @@ const accumulate = function(list, getGrams, options) {
 
 //"ng" is redundant if "ing" is equal/stronger
 const removeRedundancies = function(signals) {
-
+  //remove negative signals(for now...)
+  signals = signals.filter((a) => a.strength > 0)
   return signals
 }
 
