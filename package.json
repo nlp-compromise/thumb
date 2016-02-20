@@ -6,7 +6,7 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/nlp-compromise/rule-the-world.git"
+    "url": "git://github.com/nlp-compromise/pinky.git"
   },
   "scripts": {
     "run": "grunt",
