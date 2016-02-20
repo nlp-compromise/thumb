@@ -1,8 +1,12 @@
-# rule-the-world
-find rules + exceptions given a list of words
+
+takes two lists of words, in any language, and finds the rules and exceptions that classify them in a compact and non-redundant way.
 
 
-this package takes two lists of words, calculates the frequencies of all their edge-grams, and finds the signals  to best classify the groups, as well as their expceptions.
+given two lists of words, it calculates the frequencies of all their edge-grams (prefix & suffix), and finds the signals that best classify the lists, as well as their exceptions.
 
-this logic is used to build the taggers of nlp_compromise, in any language.
+this logic is used to build the classifiers of nlp_compromise in all languages.
 
+
+it is :boom:badasss:boom:
+
+MIT
