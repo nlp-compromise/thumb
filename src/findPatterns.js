@@ -14,7 +14,7 @@ const accumulate = function(list, getGrams, options) {
   let total = list.length
   Object.keys(hash).forEach((k) => {
     //1-case doesn't qualify as a pattern,
-    //it's better as an exception list
+    // it's better as an exception list
     if (hash[k] <= 1) {
       delete hash[k]
     } else {
@@ -22,6 +22,12 @@ const accumulate = function(list, getGrams, options) {
     }
   })
   return hash
+}
+
+//"ng" is redundant if "ing" is equal/stronger
+const removeRedundancies = function(signals) {
+
+  return signals
 }
 
 const compare = function(inObj, outObj) {
@@ -36,6 +42,9 @@ const compare = function(inObj, outObj) {
   Object.keys(difference).forEach((k) => {
     signals.push({
       gram: k,
+      length: k.length,
+      signal: difference[k],
+      //this is a subjective combination of signal+length:
       strength: k.length * difference[k]
     })
   })
@@ -49,7 +58,9 @@ const compare = function(inObj, outObj) {
       return -1
     }
   })
-  console.log(signals)
+  //if "ing" and "ng" have the same signal, remove "ng"
+  signals = removeRedundancies(signals)
+  return signals
 }
 
 const findPatterns = function(inlist, outlist, edge, options) {
@@ -62,24 +73,7 @@ const findPatterns = function(inlist, outlist, edge, options) {
   //create an obj with the frequency of each gram
   let inObj = accumulate(inlist, ngram_method, options)
   let outObj = accumulate(outlist, ngram_method, options)
-  compare(inObj, outObj)
-  return
+  return compare(inObj, outObj)
 }
 
 module.exports = findPatterns
-
-let inlist = [
-  "walking",
-  "talking",
-  "sleeping",
-  "jumping"
-]
-let outlist = [
-  "king",
-  "peanut butter",
-  "salad",
-  "hot potato",
-  "daryl sutter",
-  "jamaica",
-]
-console.log(findPatterns(inlist, outlist, "suffix", {}))
