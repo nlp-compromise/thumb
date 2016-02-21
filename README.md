@@ -1,5 +1,5 @@
 
-**pinky** takes two lists of words, in any language, and finds the rules and exceptions that classify them in a compact and non-redundant way.
+**nlp-thumb** takes two lists of words, in any language, and finds the rules and exceptions that classify them in a compact and non-redundant way.
 
 
 with the two lists of words, it calculates the frequencies of all their edge-grams (prefix & suffix), and finds the signals that best classify the lists, as well the exceptions to these rules.
@@ -21,7 +21,7 @@ let outlist = [
   "daryl sutter",
   "jamaica",
 ]
-console.log(nlpPinky(inlist, outlist, {}))
+console.log(nlpThumb(inlist, outlist, {}))
 /*
 {
   rules:[

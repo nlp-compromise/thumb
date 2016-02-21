@@ -1,6 +1,6 @@
 {
   "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
-  "name": "pinky",
+  "name": "thumb",
   "description": "find the best rules to classify words",
   "version": "0.0.1",
   "main": "src/index.js",
