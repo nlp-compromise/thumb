@@ -43,8 +43,9 @@ const removeBigger = function(obj) {
 }
 
 const findRedundancies = function(obj) {
-  //delete "ng" because of "ing" covers 100% same
+  //delete "ng" when "ing" covers 100% same
   obj = removeSmaller(obj)
+  //delete "ing" when "ng" is just as good
   obj = removeBigger(obj)
   return obj
 }

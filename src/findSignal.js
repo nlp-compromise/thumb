@@ -27,19 +27,18 @@ const findSignal = function(inObj, outObj) {
   //turn it into an array (for sorting)
   let signals = []
   Object.keys(difference).forEach((k) => {
-    signals.push({
-      gram: k,
-      length: k.length,
-      signal: difference[k].diff,
-      count: difference[k].inCount,
-      //this is a subjective combination of signal+length:
-      strength: k.length * difference[k].diff
-    })
+    //remove negative signals(for now...)
+    if (difference[k].diff > 0) {
+      signals.push({
+        suffix: k,
+        count: difference[k].inCount,
+        exceptions: [],
+        strength: difference[k].diff
+      })
+    }
   })
   //sort it
   signals = fns.sortBy(signals, 'strength')
-  //remove negative signals(for now...)
-  signals = signals.filter((a) => a.strength > 0)
   //stop the long-tail at a good point
   signals = truncate(signals)
   return signals

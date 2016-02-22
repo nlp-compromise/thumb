@@ -11,23 +11,24 @@ const thumb = function(inlist, outlist, edge, options) {
   let outObj = accumulate(outlist, options)
   let signals = findSignal(inObj, outObj)
   //find exceptions to each rule
-  // let exceptions = findExceptions(signals, outlist)
+  signals = findExceptions(signals, outlist)
   return signals
 }
 
 module.exports = thumb
-
-let inlist = [
-  "walking",
-  "talking",
-  "sleeping",
-  "jumping"
-]
-let outlist = [
-  "king",
-  "peanut butter",
-  "salad",
-  "hot potato",
-  "jamaica",
-]
-console.log(thumb(inlist, outlist, {}))
+//
+// let inlist = [
+//   "walking",
+//   "talking",
+//   "sleeping",
+//   "jumping",
+//   "juice"
+// ]
+// let outlist = [
+//   "king",
+//   "peanut butter",
+//   "salad",
+//   "hot potato",
+//   "jamaica",
+// ]
+// console.log(thumb(inlist, outlist, {}))
