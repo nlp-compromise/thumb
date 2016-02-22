@@ -1,5 +1,7 @@
 'use strict';
 
+//list the outgroups that fit these rules
+
 const findExceptions = function(signals, outList) {
   return outList.filter((str) => {
     for (let i = 0; i < signals.length; i++) {

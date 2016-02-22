@@ -19,6 +19,14 @@ describe('smartTruncate', function() {
       long: [10, 9, 9, 9, 8, 7, 2, 1, 1, 1, 1],
       short: [10, 9, 9, 9, 8, 7]
     },
+    {
+      long: [100, 9, 9, 9, 8, 7, 2, 1, 1, 1, 1],
+      short: [100]
+    },
+    {
+      long: [100, 50],
+      short: [100]
+    },
   ].forEach(function(o) {
     let shorter = smart_truncate(o.long)
     it(o.long, function(done) {

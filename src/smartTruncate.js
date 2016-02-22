@@ -1,7 +1,7 @@
 'use strict'
 
 //takes a sorted list of numbers, and finds the most suitable cut-off point
-const smart_truncate = function(arr, options) {
+const smartTruncate = function(arr, options) {
   options = options || {}
   if (!arr) {
     return []
@@ -42,7 +42,7 @@ const smart_truncate = function(arr, options) {
   return arr
 }
 
-module.exports = smart_truncate
+module.exports = smartTruncate
 
 // let options = {}
 // let arr = [100, 90, 80, 10, 10, 1]
