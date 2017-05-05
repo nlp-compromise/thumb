@@ -1,21 +1,27 @@
-'use strict'
-const accumulate = require("./parseList/accumulate.js")
-const findSignal = require("./findSignal")
-const findExceptions = require("./findExceptions")
+'use strict';
+const accumulate = require("./parseList/accumulate.js");
+const findSignal = require("./findSignal");
+const findExceptions = require("./findExceptions");
+const findCoverage = require("./findCoverage");
 
 const thumb = function(inlist, outlist, edge, options) {
-  options = options || {}
+  options = options || {};
 
   //create an obj with the frequency of each gram
-  let inObj = accumulate(inlist, options)
-  let outObj = accumulate(outlist, options)
-  let signals = findSignal(inObj, outObj)
+  let inObj = accumulate(inlist, options);
+  let outObj = accumulate(outlist, options);
+  let rules = findSignal(inObj, outObj);
   //find exceptions to each rule
-  signals = findExceptions(signals, outlist)
-  return signals
-}
+  rules = findExceptions(rules, outlist);
+  //find how well we've done
+  var coverage = findCoverage(rules, inlist);
+  return {
+    rules: rules,
+    coverage: coverage
+  };
+};
 
-module.exports = thumb
+module.exports = thumb;
 //
 // let inlist = [
 //   "walking",

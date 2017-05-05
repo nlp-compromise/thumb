@@ -40,6 +40,7 @@ const mostFrequent = function(tag) {
   });
   return result;
 };
+module.exports = mostFrequent;
 
 //adverbs
 // let all = mostFrequent('RB');
