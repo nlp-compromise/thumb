@@ -4,6 +4,13 @@ const findSignal = require("./findSignal");
 const findExceptions = require("./findExceptions");
 const findCoverage = require("./findCoverage");
 
+const truncate = function(rules) {
+  return rules.filter((o) => {
+    o.not = o.exceptions.length;
+    return o.count > o.exceptions.length;
+  });
+};
+
 const thumb = function(inlist, outlist, edge, options) {
   options = options || {};
 
@@ -13,6 +20,8 @@ const thumb = function(inlist, outlist, edge, options) {
   let rules = findSignal(inObj, outObj);
   //find exceptions to each rule
   rules = findExceptions(rules, outlist);
+  //find the most interesting ones
+  rules = truncate(rules, outlist);
   //find how well we've done
   var coverage = findCoverage(rules, inlist);
   return {

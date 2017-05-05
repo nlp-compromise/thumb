@@ -33,14 +33,14 @@ const findSignal = function(inObj, outObj) {
         suffix: k,
         count: difference[k].inCount,
         exceptions: [],
-        strength: difference[k].diff
+        strength: difference[k].diff.toFixed(4)
       });
     }
   });
   //sort it
   signals = fns.sortBy(signals, 'strength');
   //stop the long-tail at a good point
-  signals = truncate(signals);
+  // signals = truncate(signals);
   return signals;
 };
 

@@ -10,12 +10,12 @@ let verb = getWords('VB');
 verb = verb.filter((a) => a[1] > 1);
 verb = verb.map((a) => a[0]);
 
-let nouns = mostFrequent('NN');
-nouns = nouns.filter((a) => a[1] > 1);
-nouns = nouns.map((a) => a[0]);
+// let nouns = getWords('NN');
+// nouns = nouns.filter((a) => a[1] > 1);
+// nouns = nouns.map((a) => a[0]);
 
-// console.log(adj.length, verb.length, noun.length);
+// let rest = verb.concat(nouns);
 
 //inlist, outlist
-console.log(nlpThumb(adj, verb.concat(nouns), {}));
-// console.log(nlpThumb(verb, adj, {}));
+var rules = nlpThumb(adj, verb, {});
+console.log(JSON.stringify(rules, null, 2));
