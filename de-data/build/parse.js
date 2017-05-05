@@ -21,17 +21,17 @@ xml.on('endElement: terminals', function(term) {
     };
     //nouns
     if (obj.number !== '--') {
-      obj.num = obj.number;
+      res.num = obj.number;
     }
     if (obj.gender !== '--') {
-      obj.g = obj.gender;
+      res.g = obj.gender;
     }
     //verbs
     if (obj.tense !== '--') {
-      obj.tense = obj.tense;
+      res.tense = obj.tense;
     }
     if (obj.mood !== '--') {
-      obj.mood = obj.mood;
+      res.mood = obj.mood;
     }
     sentence.push(res);
   });
