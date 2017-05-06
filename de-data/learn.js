@@ -25,19 +25,24 @@ let verb = getWords('VB');
 verb = verb.filter((a) => a[1] > 1);
 verb = verb.map((a) => a[0]);
 
-// let nouns = getWords('NN');
-// nouns = nouns.filter((a) => a[1] > 1);
-// nouns = nouns.map((a) => a[0]);
+let nouns = getWords('NN');
+nouns = nouns.filter((a) => a[1] > 1);
+nouns = nouns.map((a) => a[0]);
 
-// let rest = verb.concat(nouns);
 
+let rest = verb.concat(adj);
 //inlist, outlist
-var rules = nlpThumb(verb, adj, {});
+var rules = nlpThumb(nouns, rest, {});
 // rules = fmtRules(rules);
+// console.log(rules);
 
 let exceptions = [];
 rules.rules.map((o) => {
   exceptions = exceptions.concat(o.exceptions);
+});
+
+exceptions = exceptions.filter((str) => {
+  return verb.indexOf(str) !== -1;
 });
 
 console.log(JSON.stringify(exceptions, null, 2));
