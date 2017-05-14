@@ -5,6 +5,9 @@ const suffix = function(str, size) {
   if (size <= 0) {
     return null
   }
+  if (typeof str !== 'string') {
+    return null
+  }
   if (size > len) {
     return null
   }
@@ -57,6 +60,3 @@ module.exports = {
 
 // console.log(suffixes("taiwan", {}))
 // console.log(prefixes("taiwan", {}))
-
-
-
