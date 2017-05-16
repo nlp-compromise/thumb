@@ -1,5 +1,9 @@
 var data = require('../1-top-freq/data');
 var makeSuffixes = require('./makeSuffixes');
+var output = require('./output');
+var makeLexicon = require('./makeLexicon');
+var printRules = output.printRules
+var printLexicon = output.printLexicon
 
 var findExceptions = function(suffArr, data, len) {
   for (let i = 0; i < suffArr.length; i++) {
@@ -20,6 +24,7 @@ var findExceptions = function(suffArr, data, len) {
   return suffArr
 }
 
+
 const shrinkList = function(suffArr, data) {
   data = data.filter((o) => {
     for (let i = 0; i < suffArr.length; i++) {
@@ -34,46 +39,49 @@ const shrinkList = function(suffArr, data) {
 }
 
 let original = data.length
-console.log(data.length + ' words')
 let all = []
 for (let len = 4; len >= 2; len -= 1) {
   let suffArr = makeSuffixes(len, data)
   suffArr = findExceptions(suffArr, data)
   let before = data.length
   data = shrinkList(suffArr, data)
-  console.log('(' + len + ') - ' + suffArr.length + ' suffixes capture ' + (before - data.length) + ' words')
+  // console.log('(' + len + ') - ' + suffArr.length + ' suffixes capture ' + (before - data.length) + ' words')
   all[len] = suffArr
 }
-console.log(data.length + ' words')
 
-let rules = 0
-let exceptions = 0
-for (let i = 0; i < all.length; i++) {
-  if (!all[i]) {
-    continue
-  }
-  for (let o = 0; o < all[i].length; o++) {
-    rules += 1
-    exceptions += Object.values(all[i][o].exceptions).reduce((sum, arr) => {
-      return sum + arr.length
-    }, 0)
-  }
-}
-console.log('\n\n' + rules + ' rules  ' + exceptions + ' exceptions')
-let diff = original - data.length
-console.log('reduced list from ' + original + ' to ' + data.length + ' ' + parseInt((diff / original) * 100) + '%')
+let lex = makeLexicon(all, data)
+printRules(all)
+printLexicon(lex)
 
-for (let i = 0; i < all.length; i++) {
-  if (!all[i]) {
-    continue
-  }
-  for (let o = 0; o < all[i].length; o++) {
-    let arr = Object.keys(all[i][o].exceptions).reduce((arr, k) => {
-      arr = arr.concat(all[i][o].exceptions[k])
-      return arr
-    }, [])
-  // console.log(all[i][o].str + '  -(' + all[i][o].tag + ') - - ' + all[i][o].count + '  ' + arr.join(', '))
-  }
-}
+//---output information---
+// let rules = 0
+// let exceptions = 0
+// for (let i = 0; i < all.length; i++) {
+//   if (!all[i]) {
+//     continue
+//   }
+//   for (let o = 0; o < all[i].length; o++) {
+//     rules += 1
+//     exceptions += Object.values(all[i][o].exceptions).reduce((sum, arr) => {
+//       return sum + arr.length
+//     }, 0)
+//   }
+// }
+// console.log('\n\n' + rules + ' rules  ' + exceptions + ' exceptions')
+// let diff = original - data.length
+// console.log('reduced list from ' + original + ' to ' + data.length + ' ' + parseInt((diff / original) * 100) + '%')
+//
+// for (let i = 0; i < all.length; i++) {
+//   if (!all[i]) {
+//     continue
+//   }
+//   for (let o = 0; o < all[i].length; o++) {
+//     let arr = Object.keys(all[i][o].exceptions).reduce((arr, k) => {
+//       arr = arr.concat(all[i][o].exceptions[k])
+//       return arr
+//     }, [])
+//     console.log(all[i][o].str + '  -(' + all[i][o].tag + ') - - ' + all[i][o].count + '  ' + arr.join(', '))
+//   }
+// }
 
 // console.log(JSON.stringify(all, null, 2))
