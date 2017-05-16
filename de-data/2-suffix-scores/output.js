@@ -7,19 +7,20 @@ const fileSize = function(src) {
 };
 
 exports.printRules = function(suffArr) {
-  let arr = []
+  let all = {}
   for (let i = 0; i < suffArr.length; i++) {
     if (!suffArr[i]) {
       continue
     }
-    arr[i] = {}
     for (let o = 0; o < suffArr[i].length; o++) {
       let obj = suffArr[i][o]
-      arr[i][obj.str] = obj.tag
+      let tag = obj.tag
+      all[tag] = all[tag] || []
+      all[tag].push(obj.str)
     }
   }
   let src = path.join(__dirname, '../rules.json')
-  fs.writeFileSync(src, JSON.stringify(arr, null, 2))
+  fs.writeFileSync(src, JSON.stringify(all, null, 2))
   console.log('rules:')
   fileSize(src)
 }

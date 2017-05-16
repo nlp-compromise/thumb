@@ -2,6 +2,7 @@ var data = require('../1-top-freq/data');
 var makeSuffixes = require('./makeSuffixes');
 var output = require('./output');
 var makeLexicon = require('./makeLexicon');
+var shrinkRules = require('./shrinkRules');
 var printRules = output.printRules
 var printLexicon = output.printLexicon
 
@@ -50,8 +51,10 @@ for (let len = 4; len >= 2; len -= 1) {
 }
 
 let lex = makeLexicon(all, data)
-printRules(all)
 printLexicon(lex)
+
+all = shrinkRules(all)
+printRules(all)
 
 //---output information---
 // let rules = 0
