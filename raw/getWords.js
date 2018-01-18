@@ -32,7 +32,7 @@ sentences.forEach((s) => {
     let str = w.w.toLowerCase()
     str = str.replace(/[.,?:;]$/, '')
     str = str.replace(/'s$/, '')
-    if (!str || str.length <= 2) {
+    if (!str || str.length <= 2 || /[a-z]/.test(str) === false) {
       return
     }
     if (str && words.hasOwnProperty(str) === false) {

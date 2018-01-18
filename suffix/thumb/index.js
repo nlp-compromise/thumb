@@ -7,16 +7,19 @@ const findCoverage = require("./findCoverage");
 const truncate = function(rules, max_exception) {
   return rules.filter((o) => {
     o.not = o.exceptions.length;
+    if (o.count <= o.not) {
+      return false
+    }
+    if (!o.suffix || o.strength <= 0.01) {
+      return false
+    }
+    if (o.count <= 2 && o.not > 0) {
+      return false
+    }
+    if (o.exceptions.length > max_exception) {
+      return false
+    }
     // console.log(o.suffix, o.count, o.exceptions.length, '----', o.strength)
-    if (o.count <= o.exceptions.length) {
-      return false
-    }
-    if (!o.suffix || o.count <= 2) {
-      return false
-    }
-    if (o.exceptions.length > max_exception || o.strength <= 0.01) {
-      return false
-    }
     return true
   });
 };
