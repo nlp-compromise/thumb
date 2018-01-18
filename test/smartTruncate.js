@@ -1,10 +1,8 @@
 'use strict';
-let mocha = require('mocha');
-let should = require('should');
+let tape = require('tape');
+const smart_truncate = require("../suffix/thumb/smartTruncate.js")
 
-const smart_truncate = require("../../src/smart_truncate.js")
-
-describe('smartTruncate', function() {
+tape('smartTruncate', function(t) {
 
   [
     {
@@ -21,18 +19,15 @@ describe('smartTruncate', function() {
     },
     {
       long: [100, 9, 9, 9, 8, 7, 2, 1, 1, 1, 1],
-      short: [100]
+      short: [100, 9]
     },
     {
       long: [100, 50],
-      short: [100]
+      short: [100, 50]
     },
-  ].forEach(function(o) {
+  ].forEach(function(o, i) {
     let shorter = smart_truncate(o.long)
-    it(o.long, function(done) {
-      shorter.should.deepEqual(o.short);
-      done();
-    });
+    t.deepEqual(shorter, o.short, String(i))
   });
-
+  t.end()
 });

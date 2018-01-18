@@ -2,10 +2,11 @@ var fs = require('fs');
 var tags = require('./tags');
 
 var XmlStream = require('xml-stream');
-var file = '/home/spencer/nlp/de-compromise/tiger_release_aug07.corrected.16012013.xml';
+var file = './raw/de/tiger_release_aug07.corrected.16012013.xml';
 var stream = fs.createReadStream(file);
 var xml = new XmlStream(stream);
 
+var sentences = []
 xml.collect('t');
 xml.on('endElement: terminals', function(term) {
   let terms = term.t;
@@ -35,6 +36,14 @@ xml.on('endElement: terminals', function(term) {
     }
     sentence.push(res);
   });
-  // console.log(sentence);
-  console.log(JSON.stringify(sentence));
+  sentences.push(sentence)
 });
+
+
+//when done
+xml.on('end', () => {
+  console.log(sentences.length, ' sentences')
+  console.log('writing file..')
+  fs.writeFileSync('./de-sentences.json', JSON.stringify(sentences, null, 0))
+  console.log('done.')
+})

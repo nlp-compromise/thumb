@@ -29,11 +29,13 @@ const findSignal = function(inObj, outObj) {
   Object.keys(difference).forEach((k) => {
     //remove negative signals(for now...)
     if (difference[k].diff > 0) {
+      let strength = difference[k].diff * 100
+      strength = Math.round(strength * 100) / 100
       signals.push({
         suffix: k,
         count: difference[k].inCount,
         exceptions: [],
-        strength: difference[k].diff.toFixed(4)
+        strength: strength
       });
     }
   });

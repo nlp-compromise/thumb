@@ -2,3 +2,4 @@ tiger-data.json
 *.tar.gz
 *.xml
 node_modules
+*.json

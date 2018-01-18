@@ -46,4 +46,4 @@ module.exports = thumb;
 //   "hot potato",
 //   "jamaica",
 // ]
-// console.log(thumb(inlist, outlist, {}))
+// console.log(JSON.stringify(thumb(inlist, outlist, {}), null, 2))

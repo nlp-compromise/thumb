@@ -1,31 +1,25 @@
 {
-  "author": "Spencer Kelly <spencermountain@gmail.com> (http://spencermounta.in)",
-  "name": "nlp-thumb",
-  "description": "find the best rules to classify words",
-  "version": "0.0.1",
-  "main": "src/index.js",
+  "name": "thumb",
+  "version": "1.0.1",
+  "description": "build a compromise plugin from word-data",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "de:raw": "node ./raw/de/parse.js && node ./raw/getWords.js",
+    "build:suffix": "node ./suffix/index.js"
+  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/nlp-compromise/pinky.git"
+    "url": "git+https://github.com/nlp-compromise/thumb.git"
   },
-  "scripts": {
-    "run": "grunt",
-    "test": "grunt test",
-    "watch": "grunt watch",
-    "build": "grunt build"
+  "author": "spencermountain@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nlp-compromise/thumb/issues"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "babel-preset-es2015": "6.3.13",
-    "babelify": "7.2.0",
-    "grunt": "0.4.5",
-    "grunt-contrib-watch": "0.6.1",
-    "grunt-filesize": "0.0.7",
-    "grunt-mocha-istanbul": "3.0.1",
-    "grunt-mocha-test": "0.12.7",
-    "grunt-run": "0.5.2",
-    "mocha": "2.4.3",
-    "should": "8.2.1"
-  },
-  "license": "MIT"
+  "homepage": "https://github.com/nlp-compromise/thumb#readme",
+  "dependencies": {
+    "tape": "^4.8.0",
+    "xml-stream": "^0.4.5"
+  }
 }
