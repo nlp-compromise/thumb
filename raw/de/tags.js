@@ -31,25 +31,25 @@ module.exports = {
   PWAT: 'Pronoun', //attributive interrogative pronoun welche [Farbe], //wessen [Hut]
   PWAV: 'Pronoun', //adverbial interrogative or relative pronoun warum, //wo, //wann, //woruber ¨ , //wobei
   PAV: 'Pronoun', //pronominal adverb dafur¨ , //dabei, //deswegen, //trotzdem
-  PTKZU: 'Aux', //zu before infinitive zu [gehen]
-  PTKNEG: 'Aux', //negative particle nicht
-  PTKVZ: 'Aux', //separable verbal particle [er kommt] an, //[er fahrt] ¨ rad
-  PTKANT: 'Aux', //answer particle ja, //nein, //danke, //bitte
-  PTKA: 'Aux', //particle with adjective or adverb am [schonste ¨ n], //zu [schnell]
+  PTKZU: 'VB', //'Aux', //zu before infinitive zu [gehen]
+  PTKNEG: 'VB', //'Aux', //negative particle nicht
+  PTKVZ: 'VB', //'Aux', //separable verbal particle [er kommt] an, //[er fahrt] ¨ rad
+  PTKANT: 'VB', //'Aux', //answer particle ja, //nein, //danke, //bitte
+  PTKA: 'VB', //'Aux', //particle with adjective or adverb am [schonste ¨ n], //zu [schnell]
   SGM: '', // SGML markup  turnid=n022k TS2004
   SPELL: '', //letter sequence S-C-H-W-E-I-K-L
   TRUNC: '', //word remnant An- [und Abreise]
   VVFIN: 'VB', //finite verb, //full [du] gehst, //[wir] kommen [an]
   VVIMP: 'VB', //imperative, //full komm [!]
-  VVINF: 'Inf', //infinitive, //full gehen, //ankommen
-  VVIZU: 'Inf', //Infinitive with zu, //full anzukommen, //loszulassen
+  VVINF: 'VB', //'Inf', //infinitive, //full gehen, //ankommen
+  VVIZU: 'VB', //'Inf', //Infinitive with zu, //full anzukommen, //loszulassen
   VVPP: 'VB', //perfect participle, //full gegangen, //angekommen
   VAFIN: 'VB', //finite verb, //auxiliary [du] bist, //[wir] werden
   VAIMP: 'VB', //imperative, //auxiliary sei [ruhig !]
-  VAINF: 'Inf', //infinitive, //auxiliary werden, //sein
+  VAINF: 'VB', //'Inf', //infinitive, //auxiliary werden, //sein
   VAPP: 'VB', //perfect participle, //auxiliary gewesen
   VMFIN: 'VB', //finite verb, //modal dur¨ fen
-  VMINF: 'Inf', //infinitive, //modal wollen
+  VMINF: 'VB', //'Inf', //infinitive, //modal wollen
   VMPP: 'VB', //perfect participle, //modal gekonnt, //[er hat gehen] kon¨ nen
   XY: '', //non-word containing non-letter 3:7, //H2O, //D2XW3
 };

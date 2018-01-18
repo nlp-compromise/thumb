@@ -4,15 +4,25 @@ const findSignal = require("./findSignal");
 const findExceptions = require("./findExceptions");
 const findCoverage = require("./findCoverage");
 
-const truncate = function(rules) {
+const truncate = function(rules, max_exception) {
   return rules.filter((o) => {
     o.not = o.exceptions.length;
-    return o.count > o.exceptions.length;
+    // console.log(o.suffix, o.count, o.exceptions.length, '----', o.strength)
+    if (o.count <= o.exceptions.length) {
+      return false
+    }
+    if (!o.suffix || o.count <= 2) {
+      return false
+    }
+    if (o.exceptions.length > max_exception || o.strength <= 0.01) {
+      return false
+    }
+    return true
   });
 };
 
-const thumb = function(inlist, outlist, edge, options) {
-  options = options || {};
+const thumb = function(inlist, outlist, max_exception) {
+  let options = {};
 
   //create an obj with the frequency of each gram
   let inObj = accumulate(inlist, options);
@@ -21,7 +31,7 @@ const thumb = function(inlist, outlist, edge, options) {
   //find exceptions to each rule
   rules = findExceptions(rules, outlist);
   //find the most interesting ones
-  rules = truncate(rules, outlist);
+  rules = truncate(rules, max_exception);
   //find how well we've done
   var coverage = findCoverage(rules, inlist);
   return {

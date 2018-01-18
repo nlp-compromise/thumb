@@ -44,6 +44,6 @@ xml.on('endElement: terminals', function(term) {
 xml.on('end', () => {
   console.log(sentences.length, ' sentences')
   console.log('writing file..')
-  fs.writeFileSync('./de-sentences.json', JSON.stringify(sentences, null, 0))
+  fs.writeFileSync('./sentences.json', JSON.stringify(sentences, null, 0))
   console.log('done.')
 })

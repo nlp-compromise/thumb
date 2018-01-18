@@ -30,6 +30,11 @@ let words = {}
 sentences.forEach((s) => {
   s.forEach((w) => {
     let str = w.w.toLowerCase()
+    str = str.replace(/[.,?:;]$/, '')
+    str = str.replace(/'s$/, '')
+    if (!str || str.length <= 2) {
+      return
+    }
     if (str && words.hasOwnProperty(str) === false) {
       words[str] = []
     }
@@ -52,5 +57,5 @@ arr = arr.sort((a, b) => {
   return 1
 })
 console.log('writing words file..')
-fs.writeFileSync('./de-words.json', JSON.stringify(arr, null, 1))
+fs.writeFileSync('./words.json', JSON.stringify(arr, null, 1))
 console.log('done.')

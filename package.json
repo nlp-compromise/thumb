@@ -5,7 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "de:raw": "node ./raw/de/parse.js && node ./raw/getWords.js",
+    "de:build": "node ./raw/de/parse.js && node ./raw/getWords.js",
     "build:suffix": "node ./suffix/index.js"
   },
   "repository": {
